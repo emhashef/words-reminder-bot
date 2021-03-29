@@ -1,7 +1,8 @@
-from peewee import SqliteDatabase,PostgresqlDatabase
+from peewee import SqliteDatabase,PostgresqlDatabase, Proxy
 import yaml
 from telegram.ext import Updater
 import os
+from playhouse.db_url import connect
 
 config_filename = 'config.yml'
 
@@ -18,7 +19,7 @@ def config(key: str, default=None):
 
 
 # db = SqliteDatabase(config('db', 'database.sqlite'))
-db = PostgresqlDatabase(os.environ.get('DATABASE_URL'))
+db = Proxy(connect(os.environ.get('DATABASE_URL')))
 
 updater = Updater(config('token'))
 
