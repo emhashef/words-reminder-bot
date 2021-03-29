@@ -17,7 +17,7 @@ def delete_word(updater: Updater, context: CallbackContext, user:User):
     user.set_ready()
     query.answer(text="word deleted")
 
-    query.edit_message_caption(updater.message.caption)
+    query.edit_message_caption(updater.effective_message.caption)
 
     
 

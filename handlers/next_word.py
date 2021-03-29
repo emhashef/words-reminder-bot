@@ -17,7 +17,7 @@ def next_word(updater: Updater, context: CallbackContext, user: User):
     user.set_ready()
     query.answer(text="success")
 
-    query.edit_message_caption(updater.message.caption)
+    query.edit_message_caption(updater.effective_message.caption)
 
 
 handler = CallbackQueryHandler(next_word, pattern='next')
