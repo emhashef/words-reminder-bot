@@ -19,7 +19,8 @@ def config(key: str, default=None):
 
 
 # db = SqliteDatabase(config('db', 'database.sqlite'))
-db = Proxy(connect(os.environ.get('DATABASE_URL')))
+db = Proxy()
+db.initialize(connect(os.environ.get('DATABASE_URL')))
 
 updater = Updater(config('token'))
 
