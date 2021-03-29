@@ -3,6 +3,7 @@ from datetime import datetime
 from app import bot
 from utils.image import generate_image
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+import time
 
 
 def remind():
