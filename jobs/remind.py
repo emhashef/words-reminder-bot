@@ -33,6 +33,10 @@ def remind():
 
             user.set_unready()
 
+def start_reminding():
+    while True:
+        remind()
+        time.sleep(30)
 
-if __name__ == "__main__":
-    remind()
+
+

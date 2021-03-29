@@ -7,7 +7,6 @@ from utils.image import generate_image
 from jobs.remind import remind
 import importlib
 import handlers
-import threading
 import time
 import os
 
@@ -34,14 +33,6 @@ for handler_name in handlers.__all__:
     if handler:
         updater.dispatcher.add_handler(handler)
 
-
-def remind_thread():
-    while True:
-        remind()
-        time.sleep(30)
-
-
-thread = threading.Thread(target=remind_thread).start()
 
 PORT = int(os.environ.get('PORT', 5000))
 
