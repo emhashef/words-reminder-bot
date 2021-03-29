@@ -1,0 +1,4 @@
+python_telegram_bot==13.3
+peewee==3.14.3
+Pillow==8.1.2
+PyYAML==5.4.1
