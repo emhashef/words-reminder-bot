@@ -12,16 +12,18 @@ class Word(BaseModel):
 
     def go_next_level(self):
         if self.level == 0:
-            self.remind_at = datetime.now() + timedelta(days=1)
+            self.remind_at = datetime.now()
         elif self.level == 1:
-            self.remind_at = datetime.now() + timedelta(days=2)
+            self.remind_at = datetime.now() + timedelta(days=1)
         elif self.level == 2:
-            self.remind_at = datetime.now() + timedelta(days=4)
+            self.remind_at = datetime.now() + timedelta(days=2)
         elif self.level == 3:
-            self.remind_at = datetime.now() + timedelta(days=8)
+            self.remind_at = datetime.now() + timedelta(days=4)
         elif self.level == 4:
-            self.remind_at = datetime.now() + timedelta(days=16)
+            self.remind_at = datetime.now() + timedelta(days=8)
         elif self.level == 5:
+            self.remind_at = datetime.now() + timedelta(days=16)
+        elif self.level == 6:
             return self.delete_instance()
 
         self.level += 1

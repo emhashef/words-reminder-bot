@@ -9,8 +9,7 @@ import time
 def remind():
     for user in User.select():
         if user.ready:
-            word = user.words.where(
-                Word.remind_at < datetime.now()).limit(1).first()
+            word = user.words.where(Word.remind_at < datetime.now()).order_by(Word.remind_at.desc()).limit(1).first()
 
             if not word: return
             
