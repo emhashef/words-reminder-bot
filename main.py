@@ -34,12 +34,15 @@ for handler_name in handlers.__all__:
         updater.dispatcher.add_handler(handler)
 
 
-PORT = int(os.environ.get('PORT', 5000))
+PORT = int(config('PORT', 5000))
 
-updater.start_webhook(listen="0.0.0.0",
-                      port=int(PORT),
-                      url_path=config('token'))
-updater.bot.setWebhook(config('url') + config('token'))
+if config('environment') == 'dev':
+    updater.start_polling()
+else:
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=config('token'))
+    updater.bot.setWebhook(config('url') + config('token'))
 
-updater.start_polling()
+
 updater.idle()

@@ -3,3 +3,4 @@ peewee==3.14.3
 Pillow==8.1.2
 PyYAML==5.4.1
 psycopg2-binary
+python-dotenv

@@ -17,6 +17,6 @@ def back_word(updater: Updater, context: CallbackContext, user:User):
     query.answer(text="success")
     url = f"[definition](https://www.oxfordlearnersdictionaries.com/us/definition/english/{word.value.lower()})"
 
-    query.edit_message_text(text="Read the definition again.\n\n" + url,parse_mode="Markdown")
+    query.edit_message_caption(caption="Read the definition again. 💪\n\n" + url,parse_mode="Markdown")
 
 handler = CallbackQueryHandler(back_word, pattern="back")
