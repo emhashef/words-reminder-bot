@@ -54,6 +54,7 @@ def remind():
 
             user.last_remind_id = message.message_id
             user.last_remind_at = datetime.now()
+            user.reminded = True
             user.save()
 
         elif user.ready and user.reminded and not user.last_remind_alert:
