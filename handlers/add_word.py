@@ -15,15 +15,16 @@ def add_word(update: Updater, context: CallbackContext, user: User):
         user=user,
         value=" ".join(context.args)
     )
-    word.go_next_level()
-    url = f"[definition](https://www.oxfordlearnersdictionaries.com/us/definition/english/{word.value.lower()})"
-    caption = "Read this word or delete this word if its known.\n\n" + url
-    replay_markup = [
-        [InlineKeyboardButton("Next", callback_data="next " + str(word.id)),InlineKeyboardButton("Delete", callback_data="delete " + str(word.id))]
-    ]
-    user.set_unready()
+    # word.go_next_level()
+    # url = f"[definition](https://www.oxfordlearnersdictionaries.com/us/definition/english/{word.value.lower()})"
+    # caption = "Read this word or delete this word if its known.\n\n" + url
+    # replay_markup = [
+    #     [InlineKeyboardButton("Next", callback_data="next " + str(word.id)),InlineKeyboardButton("Delete", callback_data="delete " + str(word.id))]
+    # ]
+    # word.set_reminded()
 
-    update.effective_user.send_photo(photo=generate_image(word.value),caption=caption, reply_markup=InlineKeyboardMarkup(replay_markup),parse_mode="Markdown")
+    # update.effective_user.send_photo(photo=generate_image(word.value),caption=caption, reply_markup=InlineKeyboardMarkup(replay_markup),parse_mode="Markdown")
 
+    update.effective_user.send_message('Your word added successfully.')
 
 handler = CommandHandler('add', add_word)

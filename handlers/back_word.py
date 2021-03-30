@@ -13,7 +13,7 @@ def back_word(updater: Updater, context: CallbackContext, user:User):
         return
 
     word.back_to_first_level()
-    user.set_ready()
+    user.answered()
     query.answer(text="success")
     url = f"[definition](https://www.oxfordlearnersdictionaries.com/us/definition/english/{word.value.lower()})"
 

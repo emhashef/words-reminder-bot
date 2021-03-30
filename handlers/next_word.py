@@ -14,10 +14,10 @@ def next_word(updater: Updater, context: CallbackContext, user: User):
         return
 
     word.go_next_level()
-    user.set_ready()
+    user.answered()
     query.answer(text="success")
 
-    query.edit_message_caption(updater.effective_message.caption + ' ✅', parse_mode="Markdown")
+    query.edit_message_caption(updater.effective_message.caption_markdown + ' ✅', parse_mode="Markdown")
 
 
 handler = CallbackQueryHandler(next_word, pattern='next')
