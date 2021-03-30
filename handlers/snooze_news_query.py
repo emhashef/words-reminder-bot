@@ -12,6 +12,7 @@ def snooze_news_query(update,context,user):
     user.ready_for_news_at = datetime.now() + timedelta(hours=int(hour))
     user.new_words = 0
     user.save()
-    query.answer(text=f'snoozed for {hour} hour')
+    query.answer()
+    update.effective_user.send_message(f'you snoozed for {hour} hour to retrieve new words')
 
 handler = CallbackQueryHandler(snooze_news_query,pattern='snooze_news')
