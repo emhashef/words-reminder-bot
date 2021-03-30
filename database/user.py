@@ -1,4 +1,4 @@
-from peewee import TextField, CharField, BooleanField, DateTimeField, BigIntegerField
+from peewee import TextField, CharField, BooleanField, DateTimeField, BigIntegerField, IntegerField
 from database.base import BaseModel
 from datetime import datetime, timedelta
 
@@ -13,6 +13,7 @@ class User(BaseModel):
     last_remind_at = DateTimeField(null=True)
     last_remind_alert = BooleanField(default=False)
     reminded = BooleanField(default=False)
+    new_words = IntegerField(default=0)
 
     def set_ready(self):
         self.ready = datetime.now()

@@ -32,6 +32,13 @@ def remind():
                     [InlineKeyboardButton("Next", callback_data="next " + str(word.id)),
                      InlineKeyboardButton("Delete", callback_data="delete " + str(word.id))]
                 ]
+                user.new_words += 1
+
+                if user.new_words > 10:
+                    caption += '\n\n(you can snooze new words !)'
+                    replay_markup.append(
+                        [InlineKeyboardButton("Snooze New Words (24h)",callback_data="snooze_news 24")]
+                    )
             else:
                 caption = "Do you rememeber this word?"
                 replay_markup = [
@@ -45,7 +52,9 @@ def remind():
             message = bot.send_photo(chat_id=user.chat_id, photo=generate_image(
                 word.value), caption=caption, reply_markup=InlineKeyboardMarkup(replay_markup), parse_mode="Markdown")
 
-            user.set_last_remind(message.message_id, datetime.now())
+            user.last_remind_id = message.message_id
+            user.last_remind_at = datetime.now()
+            user.save()
 
         elif user.ready and user.reminded and not user.last_remind_alert:
             if user.last_remind_at < datetime.now() - timedelta(hours=1):

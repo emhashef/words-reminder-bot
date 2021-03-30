@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 
 @have_access
-def snooze_for_news(update: Updater, context: CallbackContext, user: User):
+def snooze_news(update: Updater, context: CallbackContext, user: User):
     hour = ''.join(context.args).strip()
     if not hour and hour.isnumeric():
         update.effective_user.send_message('add hour for snooze in command')
@@ -17,4 +17,4 @@ def snooze_for_news(update: Updater, context: CallbackContext, user: User):
     update.effective_user.send_message(f'you snoozed for {hour} hour to retrieve new words')
 
 
-handler = CommandHandler('snooze_for_news',snooze_for_news)
+handler = CommandHandler('snooze_news',snooze_for_news)

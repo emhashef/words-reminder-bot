@@ -13,5 +13,5 @@ __all__ = [
     'next_word',
     'back_word',
     'snooze',
-    'snooze_for_news'
+    'snooze_news'
 ]
