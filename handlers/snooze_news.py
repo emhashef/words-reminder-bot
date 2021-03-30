@@ -18,4 +18,4 @@ def snooze_news(update: Updater, context: CallbackContext, user: User):
     update.effective_user.send_message(f'you snoozed for {hour} hour to retrieve new words')
 
 
-handler = CommandHandler('snooze_news',snooze_for_news)
+handler = CommandHandler('snooze_news',snooze_news)
