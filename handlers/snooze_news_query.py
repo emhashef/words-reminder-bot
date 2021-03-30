@@ -1,11 +1,11 @@
 from utils.decorators import have_access
-from snooze_news import snooze_news
 from telegram.ext import CallbackQueryHandler
+from datetime import datetime,timedelta
 
 @have_access
 def snooze_news_query(update,context,user):
     query = update.callback_query
-    hour = query.split()[1]
+    hour = query.data.split()[1]
     if not hour and hour.isnumeric():
         return
 
