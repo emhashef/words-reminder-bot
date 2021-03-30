@@ -12,6 +12,7 @@ def snooze_news(update: Updater, context: CallbackContext, user: User):
         return
 
     user.ready_for_news_at = datetime.now() + timedelta(hours=int(hour))
+    user.new_words = 0
     user.save()
 
     update.effective_user.send_message(f'you snoozed for {hour} hour to retrieve new words')
