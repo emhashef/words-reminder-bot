@@ -14,4 +14,5 @@ __all__ = [
     'back_word',
     'snooze',
     'snooze_news'
+    'snooze_news_query'
 ]
