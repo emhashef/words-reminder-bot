@@ -1,7 +1,6 @@
 from peewee import TextField, CharField, BooleanField, DateTimeField, BigIntegerField, IntegerField
 from database.base import BaseModel
 from datetime import datetime, timedelta
-from jobs.remind import remind
 
 
 class User(BaseModel):
@@ -51,4 +50,3 @@ class User(BaseModel):
         self.last_remind_alert = False
         self.reminded = False
         self.save()
-        remind()

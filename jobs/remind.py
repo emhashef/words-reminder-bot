@@ -71,4 +71,4 @@ def start_reminding():
     logger.info('start reminding...')
     while True:
         remind()
-        time.sleep(30)
+        time.sleep(15)
