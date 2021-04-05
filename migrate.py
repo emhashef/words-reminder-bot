@@ -10,10 +10,13 @@ logging.basicConfig(level=logging.INFO,
 
 logger = logging.getLogger(__name__)
 
+should_refresh = ('-r' or '--refresh') in sys.argv
+should_seed = ('-s' or '--seed') in sys.argv
+
 
 def migrate():
     database_module = importlib.import_module('database')
-    if ('-r' or '--refresh') in sys.argv:
+    if should_refresh:
         db.drop_tables([database_module.__dict__[table] for table in reversed(database_module.__all__)])
     db.create_tables([database_module.__dict__[table] for table in database_module.__all__])
     
@@ -41,4 +44,5 @@ def seed():
 
 if __name__ == '__main__':
     migrate()
-    seed()
+    if should_seed:
+        seed()
