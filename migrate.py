@@ -1,8 +1,9 @@
 import importlib
 from database import User
-from app import config
+from app import config,db
 from database import *
 import logging
+import sys
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -12,8 +13,9 @@ logger = logging.getLogger(__name__)
 
 def migrate():
     database_module = importlib.import_module('database')
-    for model in database_module.__all__:
-        database_module.__dict__[model].create_table()
+    if ('-r' or '--refresh') in sys.argv:
+        db.drop_tables([database_module.__dict__[table] for table in reversed(database_module.__all__)])
+    db.create_tables([database_module.__dict__[table] for table in database_module.__all__])
     
     logger.info('tables migrated successfuly')
 

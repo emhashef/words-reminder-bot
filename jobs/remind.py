@@ -10,7 +10,7 @@ logger = getLogger(__name__)
 
 
 def remind():
-    for user in User.select():
+    for user in User.select().where(User.chat_id.is_null(False)):
         if user.ready and not user.reminded:
             word = (user.words
                     .where((Word.remind_at < datetime.now()) | (Word.remind_at == None))
