@@ -21,6 +21,7 @@ def snooze(update: Updater, context: CallbackContext, user: User):
     user.save()
 
     update.effective_user.send_message(f'you snoozed for {hour} hour to retrieve any word')
+    return ConversationHandler.END
 
 
 handler =  ConversationHandler(
