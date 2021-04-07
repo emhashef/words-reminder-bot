@@ -42,7 +42,7 @@ def error_handler(update: object, context: CallbackContext) -> None:
     
     if user and user.chat_id:
         # Finally, send the message
-        context.bot.send_message(chat_id=user.chat_id, text=message, parse_mode=ParseMode.HTML)
+        context.bot.send_message(chat_id=user.chat_id, text=message, parse_mode='HTML')
 
 @have_access
 def hello(update: Update, context: CallbackContext) -> None:
@@ -61,7 +61,7 @@ for handler_name in handlers.__all__:
     if handler:
         updater.dispatcher.add_handler(handler)
 
-updater.dispatcher.add_handler(error_handler)
+updater.dispatcher.add_error_handler(error_handler)
 
 PORT = int(config('PORT', 5000))
 
