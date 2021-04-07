@@ -2,6 +2,7 @@ from database import Word, User
 from datetime import datetime,timedelta
 from app import bot
 from utils.image import generate_image
+from utils.dictionary import get_def_markdown
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import time
 from logging import getLogger
@@ -24,10 +25,8 @@ def remind():
                     'there is no word to remind to user: ' + user.username)
                 return
 
-            url = f"[definition](https://www.oxfordlearnersdictionaries.com/us/definition/english/{word.value.lower()})"
-
             if word.level == 0:
-                caption = "Read this word or delete this word if its known.\n\n" + url
+                caption = "Read this word or delete this word if its known.\n\n" + get_def_markdown(word.value)
                 replay_markup = [
                     [InlineKeyboardButton("Next", callback_data="next " + str(word.id)),
                      InlineKeyboardButton("Delete", callback_data="delete " + str(word.id))]

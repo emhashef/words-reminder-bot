@@ -28,7 +28,7 @@ def add_word(update: Updater, context: CallbackContext, user: User):
 
     # update.effective_user.send_photo(photo=generate_image(word.value),caption=caption, reply_markup=InlineKeyboardMarkup(replay_markup),parse_mode="Markdown")
 
-    update.effective_user.send_message('Your word added successfully ✅')
+    update.effective_user.send_message('Your word added successfully ✅.\nIt will be reminded repetitively.⌛')
     return ConversationHandler.END
 
 handler = ConversationHandler(
