@@ -48,5 +48,5 @@ jobs:
                 -p TOKEN \
                 -p USERNAME \
                 -p DATABASE_URL \
-                -p URL
+                -p URL \
                 -p IMAGE_VERSION
