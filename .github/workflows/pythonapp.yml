@@ -38,6 +38,7 @@ jobs:
         DATABASE_URL: ${{secrets.DATABASE_URL}}
         URL: ${{secrets.URL}}
       run: |
+        echo $IMAGE_URL
         COLLECT_ERROR=True fandogh login --username ${{secrets.FAN_USR}} --password ${{secrets.FAN_PASS}}
         COLLECT_ERROR=True fandogh image init --name $IMAGE_URL
         COLLECT_ERROR=True fandogh image publish --version $TAG
