@@ -1,7 +1,7 @@
 kind: ExternalService
 name: bot
 spec:
-  image: ${IMAGE_URL}:${TAG}
+  image: ${IMAGE_URL}:${GITHUB_SHA}
   port: 5000
   env:
     - name: TOKEN
