@@ -2,6 +2,7 @@ kind: ExternalService
 name: bot
 spec:
   image: ${IMAGE_URL}:${TAG}
+  port: 5000
   env:
     - name: TOKEN
       value: ${TOKEN}
