@@ -30,6 +30,13 @@ jobs:
       run: pip install fandogh-cli
       
     - name: Deploy
+      env:
+        IMAGE_URL: ${{secrets.IMAGE_URL}}
+        TAG: ${{secrets.TAG}}
+        TOKEN: ${{secrets.TOKEN}}
+        USERNAME: ${{secrets.USERNAME}}
+        DATABASE_URL: ${{secrets.DATABASE_URL}}
+        URL: ${{secrets.URL}}
       run: |
         COLLECT_ERROR=True fandogh login --username ${{secrets.FAN_USR}} --password ${{secrets.FAN_PASS}}
         COLLECT_ERROR=True fandogh image init --name $IMAGE_URL
