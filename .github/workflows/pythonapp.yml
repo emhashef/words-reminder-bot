@@ -25,10 +25,6 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Test with pytest
-      run: |
-        pytest
-
     - name: Install Fandogh Cli
       run: pip install fandogh-cli
       
