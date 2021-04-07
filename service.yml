@@ -1,0 +1,15 @@
+kind: ExternalService
+name: bot
+spec:
+  image: ${IMAGE_URL}:${TAG}
+  env:
+    - name: TOKEN
+      value: ${TOKEN}
+    - name: URL
+      value: ${URL}
+    - name: USERNAME
+      value: ${USERNAME}
+    - name: DATABASE_URL
+      value: ${DATABASE_URL}
+    - name: ENVIRONMENT
+      value: prod
