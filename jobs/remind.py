@@ -52,12 +52,15 @@ def remind():
             try:
                 message = bot.send_photo(chat_id=user.chat_id, photo=generate_image(
                     word.value), caption=caption, reply_markup=InlineKeyboardMarkup(replay_markup), parse_mode="Markdown")
+                
+                user.last_remind_id = message.message_id
+                user.last_remind_at = datetime.now()
+                user.reminded = True
+            
             except Unauthorized:
                 user.chat_id = None
 
-            user.last_remind_id = message.message_id
-            user.last_remind_at = datetime.now()
-            user.reminded = True
+
             user.save()
 
         elif user.ready and user.reminded and not user.last_remind_alert:
