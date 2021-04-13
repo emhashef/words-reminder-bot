@@ -4,6 +4,7 @@ from app import bot
 from utils.image import generate_image
 from utils.dictionary import get_def_markdown
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.error import Unauthorized
 import time
 from logging import getLogger
 
@@ -47,9 +48,12 @@ def remind():
 
             if word.level == 0 and not user.ready_for_news:
                 return
-
-            message = bot.send_photo(chat_id=user.chat_id, photo=generate_image(
-                word.value), caption=caption, reply_markup=InlineKeyboardMarkup(replay_markup), parse_mode="Markdown")
+                
+            try:
+                message = bot.send_photo(chat_id=user.chat_id, photo=generate_image(
+                    word.value), caption=caption, reply_markup=InlineKeyboardMarkup(replay_markup), parse_mode="Markdown")
+            except Unauthorized:
+                user.chat_id = None
 
             user.last_remind_id = message.message_id
             user.last_remind_at = datetime.now()
