@@ -8,11 +8,11 @@
 
 __all__ = [
     'login',
-    'add_word',
     'delete_word',
     'next_word',
     'back_word',
     'snooze',
     'snooze_news',
     'snooze_news_query'
+    'add_word',
 ]

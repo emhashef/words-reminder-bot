@@ -1,4 +1,5 @@
 from telegram.ext import Updater, CallbackContext, CommandHandler,ConversationHandler,MessageHandler,Filters
+from telegram.ext.filters import Filters
 from telegram import InlineKeyboardButton,InlineKeyboardMarkup
 from database import User, Word
 from utils.decorators import have_access
@@ -31,10 +32,12 @@ def add_word(update: Updater, context: CallbackContext, user: User):
     update.effective_user.send_message('Your word added successfully. It will be reminded repetitively ⌛')
     return ConversationHandler.END
 
-handler = ConversationHandler(
-    entry_points=[CommandHandler('add', ask)],
-    states={
-        ANSWER: [MessageHandler(Filters.text,add_word)]
-    },
-    fallbacks=[]
-)
+# handler = ConversationHandler(
+#     entry_points=[CommandHandler('add', ask)],
+#     states={
+#         ANSWER: [MessageHandler(Filters.text,add_word)]
+#     },
+#     fallbacks=[]
+# )
+
+handler = MessageHandler(Filters.text)
