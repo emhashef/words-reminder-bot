@@ -68,7 +68,7 @@ updater.dispatcher.add_error_handler(error_handler)
 
 PORT = int(config('PORT', 5000))
 
-if config('environment') == 'dev':
+if config('environment','dev') == 'dev':
     updater.start_polling()
 else:
     updater.start_webhook(listen="0.0.0.0",

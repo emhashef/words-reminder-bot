@@ -1,6 +1,6 @@
 from database import Word, User
 from datetime import datetime,timedelta
-from app import bot
+from app import bot, db
 from utils.image import generate_image
 from utils.dictionary import get_def_markdown
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
@@ -77,4 +77,5 @@ def start_reminding():
     logger.info('start reminding...')
     while True:
         remind()
+        db.close()
         time.sleep(15)
