@@ -76,6 +76,8 @@ def remind():
 def start_reminding():
     logger.info('start reminding...')
     while True:
+
         remind()
         db.close()
+        
         time.sleep(15)
