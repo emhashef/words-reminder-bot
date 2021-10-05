@@ -76,7 +76,8 @@ def remind():
 def start_reminding():
     logger.info('start reminding...')
     while True:
-
+        
+        # close data base connection 
         remind()
         db.close()
         
