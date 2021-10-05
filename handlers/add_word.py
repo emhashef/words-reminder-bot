@@ -40,4 +40,4 @@ def add_word(update: Updater, context: CallbackContext, user: User):
 #     fallbacks=[]
 # )
 
-handler = MessageHandler(Filters.text)
+handler = MessageHandler(Filters.text,add_word)
