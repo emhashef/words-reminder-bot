@@ -45,6 +45,7 @@ def error_handler(update: Update, context: CallbackContext) -> None:
 
     # if user and user.chat_id:
     #     # Finally, send the message
+    # send error to user
     context.bot.send_message(chat_id= update.effective_chat.id, text=message, parse_mode='HTML')
 
 @have_access
