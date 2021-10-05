@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.DEBUG,
 
 logger = logging.getLogger(__name__)
 
-def error_handler(update: object, context: CallbackContext) -> None:
+def error_handler(update: Update, context: CallbackContext) -> None:
     """Log the error and send a telegram message to notify the developer."""
     # Log the error before we do anything else, so we can see it even if something breaks.
     logger.error(msg="Exception while handling an update:", exc_info=context.error)
@@ -41,11 +41,11 @@ def error_handler(update: object, context: CallbackContext) -> None:
         f'<pre>{html.escape(tb_string)}</pre>'
     )
 
-    user = User.get_or_none(username=config('username'))
+    # user = User.get_or_none(username=config('username'))
 
-    if user and user.chat_id:
-        # Finally, send the message
-        context.bot.send_message(chat_id=user.chat_id, text=message, parse_mode='HTML')
+    # if user and user.chat_id:
+    #     # Finally, send the message
+    context.bot.send_message(chat_id= update.effective_chat.id, text=message, parse_mode='HTML')
 
 @have_access
 def hello(update: Update, context: CallbackContext) -> None:
