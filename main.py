@@ -1,6 +1,6 @@
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
-from app import config, updater
+from app import config, updater, db
 from utils.decorators import have_access
 from utils.image import generate_image
 from jobs.remind import remind
@@ -59,10 +59,21 @@ def hello(update: Update, context: CallbackContext) -> None:
 
 
 updater.dispatcher.add_handler(CommandHandler('hello', hello))
+
 for handler_name in handlers.__all__:
     handler_module = importlib.import_module('handlers.'+handler_name)
     handler = getattr(handler_module, 'handler', None)
     if handler:
+        # callback = handler.callback
+
+        # def db_callback(**args):
+        #     res = callback(**args)
+        #     db.close()
+        #     return res
+
+        # handlers.callback = callback
+        
+
         updater.dispatcher.add_handler(handler)
 
 updater.dispatcher.add_error_handler(error_handler)
