@@ -15,4 +15,5 @@ __all__ = [
     'snooze_news',
     'snooze_news_query',
     'add_word',
+    'add_file_words'
 ]
