@@ -16,7 +16,7 @@ def get_def_markdown(word: str):
         res = requests.get(f'https://abadis.ir/entofa/{word.lower()}')
         soup = BeautifulSoup(res.content, 'html.parser')
         translate = soup.select('.boxMain')[0].contents[3].replace(':','').strip()
-        Definition.create(word=word,definition=translate)
+        Definition.create(word=word.lower(),definition=translate)
 
     else:
         translate = db_def
