@@ -7,7 +7,7 @@ def get_def_from_db(word: str):
     return definition.definition if definition else None
 
 def get_def_url(word: str):
-    return f'https://abadis.ir/entofa/{word.lower()}'
+    return f'https://www.oxfordlearnersdictionaries.com/us/definition/english/{word.lower()}'
 
 def get_def_markdown(word: str):
 
