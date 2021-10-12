@@ -18,7 +18,8 @@ db.initialize(connect(config('DATABASE_URL', 'sqlite:///database.sqlite')))
 
 class CustomDispatcher(Dispatcher):
     def process_update(self, update):
-        super().process_update(update)
+        with db.atomic() as txn:
+            super().process_update(update)
         db.close()
 
 
